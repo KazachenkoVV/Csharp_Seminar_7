@@ -14,41 +14,41 @@ void Main()
 {
     int m = inputInt("Введите натуральное число - ");
     int n = inputInt("Введите другое натуральное число - ");
-    
+
     Console.Write($"M = {m}; N = {n} -> \"");
 
     printRangeOfNaturalNumerals(m, n);
 
     Console.WriteLine("\"");
+}
 
-    void printRangeOfNaturalNumerals(int m, int n)
+void printRangeOfNaturalNumerals(int m, int n)
+{
+    if (m < n)
     {
-        if (m < n)
-        {
-            Console.Write($"{m}, ");
-            printRangeOfNaturalNumerals(++m, n);
-        }
-        else if(m > n)
-        {
-            Console.Write($"{m}, ");
-            printRangeOfNaturalNumerals(--m, n);
-        }
-        else
-        {
-            Console.Write(m);
-            return;
-        }
+        Console.Write($"{m}, ");
+        printRangeOfNaturalNumerals(++m, n);
     }
-
-    int inputInt(string msg)
+    else if (m > n)
     {
-        while (true)
-        {
-            Console.Write($"{msg}");
-            if (int.TryParse(Console.ReadLine(), out int number))
-                if (number >= 1)
-                    return number;
-            Console.WriteLine("Это не натуральное число! Попробуйте ещё раз.");
-        }
+        Console.Write($"{m}, ");
+        printRangeOfNaturalNumerals(--m, n);
+    }
+    else
+    {
+        Console.Write(m);
+        return;
+    }
+}
+
+int inputInt(string msg)
+{
+    while (true)
+    {
+        Console.Write($"{msg}");
+        if (int.TryParse(Console.ReadLine(), out int number))
+            if (number >= 1)
+                return number;
+        Console.WriteLine("Это не натуральное число! Попробуйте ещё раз.");
     }
 }
